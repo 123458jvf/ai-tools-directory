@@ -1,315 +1,84 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+.popular-categories {
+  margin: 28px 0;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 18px;
 }
 
-body {
-  background-color: #0b0f19;
-  color: #ffffff;
-}
-
-.app-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 15px;
-}
-
-/* নেভিগেশন */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 0;
-  border-bottom: 1px solid #1e293b;
-}
-
-.logo-section {
+.popular-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-}
-
-.logo-icon {
-  font-size: 2rem;
-}
-
-.logo-title {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.logo-subtitle {
-  font-size: 0.7rem;
-  color: #94a3b8;
-}
-
-.nav-links {
-  display: flex;
-  gap: 20px;
-}
-
-.nav-links a {
-  color: #94a3b8;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.nav-links a.active {
-  color: #6366f1;
-  font-weight: bold;
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.login-btn {
-  background: #6366f1;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-/* হিরো সেকশন */
-.hero-section {
-  text-align: center;
-  padding: 50px 20px;
-  background: radial-gradient(circle at top, #1e1b4b 0%, #0b0f19 70%);
-  border-radius: 20px;
-  margin-top: 20px;
-}
-
-.trending-badge {
-  display: inline-block;
-  background: rgba(239, 68, 68, 0.2);
-  color: #f87171;
-  padding: 5px 12px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  margin-bottom: 15px;
-}
-
-.hero-section h1 {
-  font-size: 2.5rem;
-  line-height: 1.2;
-  margin-bottom: 15px;
-}
-
-.hero-section h1 span {
-  color: #818cf8;
-}
-
-.hero-section p {
-  color: #94a3b8;
-  max-width: 600px;
-  margin: 0 auto 25px;
-  font-size: 0.95rem;
-}
-
-.hero-search {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  background: #1e293b;
-  border-radius: 30px;
-  padding: 5px 5px 5px 20px;
-  border: 1px solid #334155;
-}
-
-.hero-search input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  color: white;
-  outline: none;
-}
-
-.search-submit {
-  background: #6366f1;
-  border: none;
-  color: white;
-  padding: 10px 24px;
-  border-radius: 25px;
-  cursor: pointer;
-}
-
-.popular-tags {
-  margin-top: 20px;
-  font-size: 0.8rem;
-  color: #94a3b8;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.popular-tags button {
-  background: #1e293b;
-  border: none;
-  color: #cbd5e1;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
-
-/* ক্যাটাগরি গ্রিড */
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 10px;
-  margin: 30px 0;
-}
-
-.cat-card {
-  background: #111827;
-  border: 1px solid #1f2937;
-  padding: 15px 5px;
-  border-radius: 12px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.cat-card.active {
-  border-color: #6366f1;
-  background: #1e1b4b;
-}
-
-.cat-icon {
-  font-size: 1.5rem;
-  margin-bottom: 5px;
-}
-
-.cat-name {
-  font-size: 0.75rem;
-  color: #d1d5db;
-}
-
-/* মেইন লেআউট */
-.content-layout {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 25px;
-}
-
-@media (max-width: 768px) {
-  .content-layout {
-    grid-template-columns: 1fr;
-  }
-  .nav-links {
-    display: none;
-  }
-}
-
-.tools-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.hub-tool-card {
-  background: #111827;
-  border: 1px solid #1f2937;
-  border-radius: 12px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.tool-category-badge {
-  font-size: 0.7rem;
-  color: #818cf8;
-  background: rgba(129, 140, 248, 0.1);
-  padding: 3px 8px;
-  border-radius: 10px;
-  width: fit-content;
-}
-
-.hub-tool-card p {
-  font-size: 0.8rem;
-  color: #9ca3af;
-  flex: 1;
-}
-
-.visit-tool-btn {
-  background: #1f2937;
-  color: white;
-  text-align: center;
-  padding: 8px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-/* সাইডবার */
-.upgrade-card {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-  padding: 20px;
-  border-radius: 12px;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
-.upgrade-card h3 {
-  margin-bottom: 8px;
+.popular-fire {
+  font-size: 30px;
 }
 
-.upgrade-card p {
-  font-size: 0.8rem;
-  margin-bottom: 15px;
-  opacity: 0.9;
+.popular-header h2 {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 800;
+  color: #171923;
 }
 
-.upgrade-btn {
-  background: white;
-  color: #4f46e5;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
+.popular-header p {
+  margin: 5px 0 0;
+  color: #737789;
+  font-size: 14px;
 }
 
-.trending-widget {
-  background: #111827;
-  border: 1px solid #1f2937;
-  padding: 20px;
-  border-radius: 12px;
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.trending-list {
-  list-style: none;
-  margin-top: 15px;
-}
-
-.trending-list li {
+.category-card {
   display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid #1f2937;
-  font-size: 0.85rem;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 16px 12px;
+  border: 1px solid #e8eaf0;
+  border-radius: 12px;
+  background: #f9faff;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.2s ease;
 }
 
-.trend-up {
-  color: #10b981;
+.category-card:hover {
+  background: #eef2ff;
+  border-color: #818cf8;
+  transform: translateY(-2px);
 }
 
-/* ফুটার */
-.footer {
-  text-align: center;
-  padding: 30px 0;
-  margin-top: 40px;
-  border-top: 1px solid #1f2937;
-  color: #6b7280;
-  font-size: 0.8rem;
+.category-icon {
+  font-size: 24px;
+}
+
+.category-name {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 700;
+  color: #25283b;
+}
+
+.category-arrow {
+  color: #6366f1;
+  font-size: 18px;
+}
+
+@media (max-width: 420px) {
+  .popular-categories {
+    padding: 16px;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
 }
