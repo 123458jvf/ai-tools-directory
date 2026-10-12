@@ -1,10 +1,101 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+/* Popular Categories */
+.popular-section {
+  margin: 28px 0;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+}
+
+.popular-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.heading-icon {
+  font-size: 30px;
+}
+
+.popular-heading h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  color: #171923;
+}
+
+.popular-heading p {
+  margin: 6px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.category-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 15px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 13px;
+  background: #f9faff;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.category-card:hover {
+  background: #eef2ff;
+  border-color: #818cf8;
+  transform: translateY(-2px);
+}
+
+.category-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.category-name {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 700;
+  color: #25283b;
+}
+
+.category-arrow {
+  color: #6366f1;
+  font-size: 18px;
+}
+
+@media (min-width: 768px) {
+  .category-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  .popular-section {
+    padding: 16px;
+  }
+
+  .popular-heading h2 {
+    font-size: 20px;
+  }
+
+  .category-card {
+    padding: 12px 8px;
+  }
+
+  .category-name {
+    font-size: 12px;
+  }
+}
