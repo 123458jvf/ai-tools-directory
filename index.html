@@ -1,22 +1,229 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Tools Hub - Discover the Best AI Tools</title>
-
-    <!-- Google Search Console Verification -->
-    <meta name="google-site-verification" content="CkueB7Qgyj5rJ_k2UZdph4emXAP5P7zquvCNOxcEnKw" />
-
-    <!-- Google AdSense Account Verification Meta Tag -->
-    <meta name="google-adsense-account" content="ca-pub-4273007448994004">
-
-    <!-- Google AdSense Code -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4273007448994004"
-     crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17182f">
+<meta name="description" content="Discover useful AI tools for writing, images, video, coding, design and productivity.">
+<title>AI Tools Hub | Discover AI Tools</title>
+<style>
+:root{--purple:#6c5ce7;--dark:#17182f;--bg:#f6f7fb;--text:#20243a;--muted:#7b8498;--border:#e7eaf2}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:white;color:var(--text);font-family:Arial,Helvetica,sans-serif}
+button,input,select{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.topbar{background:var(--dark);color:#e4e0ff;text-align:center;padding:9px;font-size:12px}
+header{position:sticky;top:0;z-index:10;background:white;border-bottom:1px solid var(--border);padding:15px 5%;display:flex;align-items:center;gap:22px}
+.logo{display:flex;align-items:center;gap:9px;font-size:21px;font-weight:800;white-space:nowrap}
+.logo-icon{background:var(--purple);color:white;border-radius:11px;padding:10px}
+.logo span:last-child span{color:var(--purple)}
+.search{display:flex;align-items:center;gap:10px;flex:1;max-width:600px;background:#f4f5f9;border:1px solid var(--border);border-radius:10px;padding:0 13px;height:44px}
+.search input{width:100%;border:0;outline:0;background:transparent;font-size:14px;min-width:0}
+.header-actions{margin-left:auto;display:flex;gap:8px}
+.btn{border:1px solid var(--border);background:white;border-radius:9px;padding:10px 13px;font-size:12px;font-weight:bold}
+.btn:hover,.chip:hover{border-color:var(--purple);color:var(--purple)}
+.menu-btn{display:none}
+.hero{margin:25px 5% 0;padding:55px 6%;border-radius:22px;background:radial-gradient(circle at 85% 20%,#403778,transparent 40%),linear-gradient(120deg,#17182f,#222044);color:white;position:relative;overflow:hidden}
+.hero-content{max-width:650px;position:relative;z-index:1}
+.eyebrow{font-size:11px;letter-spacing:2px;color:#c3baff;font-weight:bold}
+.hero h1{font-size:clamp(36px,5vw,60px);letter-spacing:-2px;line-height:1.1;margin:18px 0}
+.hero h1 span{color:#b7adff}
+.hero p{color:#d0d1e2;font-size:15px;line-height:1.7}
+.hero-search{display:flex;background:white;border-radius:12px;padding:6px;max-width:550px;margin-top:25px}
+.hero-search input{border:0;outline:0;flex:1;min-width:0;padding:0 10px;font-size:13px}
+.hero-search button{background:var(--purple);color:white;border:0;border-radius:8px;padding:13px 17px;font-weight:bold;font-size:12px}
+.trust{display:flex;gap:17px;flex-wrap:wrap;font-size:11px;color:#c5c9dc;margin-top:20px}
+main{padding:0 5%}
+section.content{padding-top:45px}
+.heading{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:18px}
+.kicker{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--purple);font-weight:bold;margin-bottom:8px}
+h2{font-size:25px;letter-spacing:-.6px;margin:0}
+.heading small{color:var(--muted)}
+.categories{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.category{background:white;border:1px solid var(--border);border-radius:13px;padding:17px;text-align:left;min-width:0;transition:.2s}
+.category:hover,.category.active{border-color:#c8c0ff;box-shadow:0 5px 18px #6c5ce710;transform:translateY(-2px)}
+.cat-icon{display:grid;place-items:center;width:39px;height:39px;background:#f0edff;color:var(--purple);border-radius:11px;font-size:20px;margin-bottom:13px}
+.category strong{display:block;font-size:13px}
+.category small{display:block;color:var(--muted);font-size:11px;margin-top:6px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:3px 0 13px;scrollbar-width:thin}
+.chip{white-space:nowrap;border:1px solid var(--border);border-radius:9px;padding:9px 12px;background:white;color:#5c657b;font-size:12px}
+.chip.active{background:#f0edff;color:var(--purple);border-color:#d7d0ff}
+.tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.card{border:1px solid var(--border);border-radius:14px;padding:17px;display:flex;flex-direction:column;min-width:0;min-height:235px;transition:.2s}
+.card:hover{border-color:#c9c0ff;transform:translateY(-3px);box-shadow:0 10px 24px #2220440c}
+.card-top{display:flex;justify-content:space-between;align-items:start}
+.tool-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:13px;font-size:23px;font-weight:bold;background:#e9e5ff;color:#5f4fd2}
+.tool-icon.green{background:#dcf7e9;color:#187a54}
+.tool-icon.orange{background:#ffeadf;color:#bd6844}
+.tool-icon.blue{background:#e1edff;color:#386bc4}
+.tool-icon.pink{background:#ffe5ef;color:#bd4e79}
+.favorite{border:1px solid var(--border);background:white;color:#8992a4;border-radius:8px;padding:7px;font-size:17px}
+.favorite.saved{color:#e34c79;background:#fff0f5}
+.meta{color:var(--muted);font-size:10px;margin-top:15px}
+.card h3{font-size:16px;margin:8px 0}
+.desc{color:#747e91;font-size:12px;line-height:1.65;margin:0 0 17px;flex:1}
+.card-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid #f0f1f5;padding-top:12px}
+.official{font-size:10px;color:#8b94a6}
+.visit{color:var(--purple);font-size:11px;font-weight:bold;white-space:nowrap}
+.visit:hover{text-decoration:underline}
+.empty{text-align:center;padding:45px 10px;color:var(--muted);border:1px dashed var(--border);border-radius:12px}
+.empty button{background:var(--purple);color:white;border:0;padding:10px 15px;border-radius:8px}
+.note{text-align:center;color:#929bad;font-size:11px;line-height:1.6;padding:22px 0}
+footer{margin-top:15px;padding:28px 5%;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:var(--muted);font-size:12px}
+footer strong{color:var(--text)}
+@media(min-width:1400px){.tools{grid-template-columns:repeat(5,minmax(0,1fr))}.hero{padding-top:70px;padding-bottom:70px}}
+@media(max-width:1000px){header{gap:12px;padding:14px 3%}.categories{grid-template-columns:repeat(3,minmax(0,1fr))}.tools{grid-template-columns:repeat(3,minmax(0,1fr))}main{padding:0 3%}.hero{margin-left:3%;margin-right:3%}}
+@media(max-width:650px){
+ header{padding:12px 15px;gap:10px;flex-wrap:wrap}
+ .logo{font-size:18px}.logo-icon{padding:8px}
+ .header-actions{gap:5px}
+ .btn{padding:9px;font-size:11px}
+ .search{order:3;flex-basis:100%;max-width:none;height:42px}
+ .menu-btn{display:block}
+ main{padding:0 15px}
+ .hero{margin:14px 15px 0;padding:32px 19px;border-radius:16px}
+ .hero h1{font-size:39px;letter-spacing:-1.5px}
+ .hero p{font-size:13px}
+ .hero-search{height:49px;margin-top:19px}
+ .hero-search input{font-size:11px;padding:0 5px}
+ .hero-search button{padding:0 12px;font-size:11px}
+ .trust{font-size:9px;gap:9px 13px}
+ section.content{padding-top:34px}
+ h2{font-size:21px}
+ .categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .category{padding:13px;min-height:105px}
+ .cat-icon{width:34px;height:34px;margin-bottom:10px}
+ .category strong{font-size:12px}
+ .tools{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .card{padding:12px;min-height:235px}
+ .tool-icon{width:41px;height:41px;font-size:20px}
+ .card h3{font-size:14px;overflow-wrap:anywhere}
+ .desc{font-size:11px}
+ .card-bottom{align-items:flex-start;flex-direction:column}
+ .heading small{font-size:10px}
+ footer{padding:23px 15px}
+}
+@media(max-width:360px){.hero h1{font-size:34px}.card{padding:10px}.card h3{font-size:13px}.desc{font-size:10px}}
+</style>
+</head>
+<body>
+<div class="topbar">✦ Discover useful AI tools for your everyday work</div>
+<header>
+<a class="logo" href="#"><span class="logo-icon">✦</span><span>AI Tools <span>Hub</span></span></a>
+<div class="search">⌕ <input id="search" placeholder="Search AI tools..." aria-label="Search AI tools"></div>
+<div class="header-actions">
+<button class="btn" id="language">বাংলা</button>
+<button class="btn" id="favorites">♡ Saved <span id="saved-count">0</span></button>
+<button class="btn menu-btn" id="menu">☰</button>
+</div>
+</header>
+<section class="hero">
+<div class="hero-content">
+<div class="eyebrow">YOUR AI TOOLBOX</div>
+<h1 id="hero-title">Discover tools.<br><span>Do more.</span></h1>
+<p id="hero-subtitle">Find the right AI tool for your next big idea.</p>
+<form class="hero-search" id="search-form">
+<input id="hero-search" placeholder="Search AI tools, images, video, coding..." aria-label="Search AI tools">
+<button id="search-button">Search ↗</button>
+</form>
+<div class="trust"><span>✓ Carefully selected tools</span><span>✓ Official links</span><span>✓ Easy to explore</span></div>
+</div>
+</section>
+<main>
+<section class="content">
+<div class="heading"><div><div class="kicker">EXPLORE</div><h2 id="categories-title">Popular Categories</h2></div></div>
+<div class="categories" id="categories"></div>
+</section>
+<section class="content" id="tool-section">
+<div class="heading"><div><div class="kicker">DISCOVER YOUR NEXT TOOL</div><h2 id="list-title">All AI Tools</h2></div><small id="result-count"></small></div>
+<div class="chips" id="chips"></div>
+<div class="tools" id="tools"></div>
+<div class="empty" id="empty" hidden><h3>No tools found</h3><p>Try another keyword or category.</p><button id="reset">Show all tools</button></div>
+<p class="note" id="note">Tool pricing and features may change. Check each official website before use.</p>
+</section>
+</main>
+<footer><strong>✦ AI Tools Hub</strong><span>Discover tools. Do more.</span><span>© <span id="year"></span> AI Tools Hub</span></footer>
+<script>
+const data=[
+{id:1,name:"ChatGPT",cat:"Writing",icon:"✦",color:"green",desc:"Write, learn, brainstorm and solve everyday problems with AI.",url:"https://chatgpt.com/",tags:"assistant writing chat"},
+{id:2,name:"Claude",cat:"Writing",icon:"✺",color:"orange",desc:"Draft content, analyze documents and explore complex ideas.",url:"https://claude.ai/",tags:"writing documents assistant"},
+{id:3,name:"Google Gemini",cat:"Productivity",icon:"✧",color:"blue",desc:"An AI assistant for research, planning and creative work.",url:"https://gemini.google.com/",tags:"assistant research"},
+{id:4,name:"Canva",cat:"Design",icon:"▧",color:"blue",desc:"Design graphics, presentations and social media content.",url:"https://www.canva.com/",tags:"design graphics presentation"},
+{id:5,name:"Adobe Firefly",cat:"Image",icon:"✹",color:"orange",desc:"Generate and edit creative images with AI.",url:"https://firefly.adobe.com/",tags:"image art photo"},
+{id:6,name:"Ideogram",cat:"Image",icon:"◉",color:"blue",desc:"Create images, posters and graphics from text prompts.",url:"https://ideogram.ai/",tags:"image poster art"},
+{id:7,name:"Leonardo AI",cat:"Image",icon:"◈",color:"green",desc:"Create detailed AI images and visual assets.",url:"https://leonardo.ai/",tags:"image art"},
+{id:8,name:"Runway",cat:"Video",icon:"▶",color:"pink",desc:"Explore AI video generation and creative editing.",url:"https://runwayml.com/",tags:"video motion editing"},
+{id:9,name:"Pika",cat:"Video",icon:"▷",color:"purple",desc:"Turn creative ideas into short AI-generated videos.",url:"https://pika.art/",tags:"video animation"},
+{id:10,name:"ElevenLabs",cat:"Voice",icon:"≋",color:"green",desc:"Create AI voices, speech and audio content.",url:"https://elevenlabs.io/",tags:"voice audio speech"},
+{id:11,name:"Suno",cat:"Voice",icon:"♫",color:"blue",desc:"Generate music and songs from written ideas.",url:"https://suno.com/",tags:"music song audio"},
+{id:12,name:"GitHub Copilot",cat:"Coding",icon:"</>",color:"purple",desc:"Get AI assistance while writing and understanding code.",url:"https://github.com/features/copilot",tags:"code programming developer"},
+{id:13,name:"Cursor",cat:"Coding",icon:"{ }",color:"green",desc:"An AI-powered code editor for software development.",url:"https://cursor.com/",tags:"code editor developer"},
+{id:14,name:"Perplexity",cat:"Research",icon:"⌕",color:"blue",desc:"Research questions with an AI search and answer engine.",url:"https://www.perplexity.ai/",tags:"search research answers"},
+{id:15,name:"Notion AI",cat:"Productivity",icon:"N",color:"orange",desc:"Summarize notes and organize your everyday workflow.",url:"https://www.notion.so/product/ai",tags:"notes productivity writing"},
+{id:16,name:"DeepL Write",cat:"Writing",icon:"文",color:"purple",desc:"Improve clarity, tone and wording in your writing.",url:"https://www.deepl.com/write",tags:"writing grammar language"},
+{id:17,name:"Remove.bg",cat:"Image",icon:"▧",color:"blue",desc:"Remove image backgrounds in a few simple steps.",url:"https://www.remove.bg/",tags:"background photo image"},
+{id:18,name:"Khan Academy",cat:"Learning",icon:"✎",color:"green",desc:"Explore learning resources for study and education.",url:"https://www.khanacademy.org/",tags:"learning study education"}
+];
+const categoryNames=["All Tools","Writing","Image","Video","Design","Coding","Voice","Productivity","Research","Learning"];
+const categoryIcons={"All Tools":"✦","Writing":"✎","Image":"▧","Video":"▶","Design":"✧","Coding":"</>","Voice":"♫","Productivity":"▤","Research":"⌕","Learning":"✎"};
+let category="All Tools",showSaved=false,lang="en";
+let saved=[];
+try{saved=JSON.parse(localStorage.getItem("aih-saved")||"[]")}catch(e){}
+const $=id=>document.getElementById(id);
+const translations={
+en:{categories:"Popular Categories",all:"All AI Tools",search:"Search",saved:"Saved Tools",visit:"Visit tool ↗",no:"No tools found",empty:"Try another keyword or category.",note:"Tool pricing and features may change. Check each official website before use.",hero:"Discover tools.",hero2:"Do more.",sub:"Find the right AI tool for your next big idea."},
+bn:{categories:"জনপ্রিয় ক্যাটাগরি",all:"সব AI টুল",search:"খুঁজুন",saved:"সেভ করা টুল",visit:"টুল খুলুন ↗",no:"কোনো টুল পাওয়া যায়নি",empty:"অন্য শব্দ বা ক্যাটাগরি দিয়ে খুঁজুন।",note:"টুলের মূল্য ও সুবিধা বদলাতে পারে। অফিসিয়াল ওয়েবসাইটে যাচাই করুন।",hero:"টুল খুঁজুন।",hero2:"আরও কাজ করুন।",sub:"আপনার কাজের জন্য সঠিক AI টুল খুঁজে নিন।"}
+};
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function renderCategories(){
+$("categories").innerHTML=categoryNames.filter(c=>c!=="All Tools").map(c=>{
+const count=data.filter(t=>t.cat===c).length;
+return `<button class="category ${category===c&&!showSaved?"active":""}" data-cat="${c}"><span class="cat-icon">${categoryIcons[c]}</span><strong>${c}</strong><small>${count} tools</small></button>`;
+}).join("");
+$("chips").innerHTML=categoryNames.map(c=>`<button class="chip ${category===c&&!showSaved?"active":""}" data-cat="${c}">${categoryIcons[c]} ${c}</button>`).join("");
+}
+function renderTools(){
+const q=$("search").value.trim().toLowerCase();
+const list=data.filter(t=>(category==="All Tools"||t.cat===category)&&(!showSaved||saved.includes(t.id))&&(!q||(t.name+" "+t.cat+" "+t.desc+" "+t.tags).toLowerCase().includes(q)));
+$("list-title").textContent=showSaved?translations[lang].saved:(category==="All Tools"?translations[lang].all:category);
+$("result-count").textContent=list.length+(lang==="bn"?"টি টুল":" tools");
+$("saved-count").textContent=saved.length;
+$("favorites").innerHTML=`♡ ${lang==="bn"?"সেভ":"Saved"} ${saved.length}`;
+$("tools").innerHTML=list.map(t=>`<article class="card">
+<div class="card-top"><span class="tool-icon ${t.color}">${t.icon}</span><button class="favorite ${saved.includes(t.id)?"saved":""}" data-save="${t.id}" aria-label="Save ${escapeHTML(t.name)}">${saved.includes(t.id)?"♥":"♡"}</button></div>
+<div class="meta">${escapeHTML(t.cat)}${t.id<=4?" · Featured":""}</div>
+<h3>${escapeHTML(t.name)}</h3><p class="desc">${escapeHTML(t.desc)}</p>
+<div class="card-bottom"><span class="official">● Official website</span><a class="visit" href="${t.url}" target="_blank" rel="noopener noreferrer">${translations[lang].visit}</a></div>
+</article>`).join("");
+$("empty").hidden=list.length>0;
+$("tools").hidden=list.length===0;
+$("note").textContent=translations[lang].note;
+$("categories-title").textContent=translations[lang].categories;
+$("search-button").textContent=translations[lang].search;
+$("hero-title").innerHTML=translations[lang].hero+"<br><span>"+translations[lang].hero2+"</span>";
+$("hero-subtitle").textContent=translations[lang].sub;
+$("language").textContent=lang==="en"?"বাংলা":"English";
+renderCategories();
+}
+document.addEventListener("click",e=>{
+const cat=e.target.closest("[data-cat]");
+if(cat){category=cat.dataset.cat;showSaved=false;renderTools();$("tool-section").scrollIntoView({behavior:"smooth"});return}
+const save=e.target.closest("[data-save]");
+if(save){const id=Number(save.dataset.save);saved=saved.includes(id)?saved.filter(x=>x!==id):[...saved,id];try{localStorage.setItem("aih-saved",JSON.stringify(saved))}catch(e){}renderTools()}
+});
+$("search").addEventListener("input",()=>{ $("hero-search").value=$("search").value;showSaved=false;renderTools()});
+$("hero-search").addEventListener("input",()=>{ $("search").value=$("hero-search").value;showSaved=false;renderTools()});
+$("search-form").addEventListener("submit",e=>{e.preventDefault();$("tool-section").scrollIntoView({behavior:"smooth"})});
+$("favorites").addEventListener("click",()=>{showSaved=!showSaved;category="All Tools";renderTools();$("tool-section").scrollIntoView({behavior:"smooth"})});
+$("language").addEventListener("click",()=>{lang=lang==="en"?"bn":"en";document.documentElement.lang=lang;renderTools()});
+$("reset").addEventListener("click",()=>{$("search").value="";$("hero-search").value="";category="All Tools";showSaved=false;renderTools()});
+$("menu").addEventListener("click",()=>document.querySelector(".content").scrollIntoView({behavior:"smooth"}));
+$("year").textContent=new Date().getFullYear();
+renderTools();
+</script>
+</body>
 </html>
