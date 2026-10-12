@@ -454,3 +454,57 @@ footer {
     min-height: 90px;
   }
 }
+
+/* Desktop layout fix */
+@media (min-width: 1024px) {
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+  }
+
+  main,
+  .container,
+  .app-container,
+  .popular-section {
+    width: min(1200px, calc(100% - 64px));
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .tool-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .category-card,
+  .tool-card {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  header {
+    padding-left: max(32px, calc((100% - 1200px) / 2));
+    padding-right: max(32px, calc((100% - 1200px) / 2));
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .category-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .tool-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
